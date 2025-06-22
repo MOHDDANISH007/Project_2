@@ -28,7 +28,7 @@ console.log('Starting minimal server...');
 // Allow requests from specific origins
 // This is important for security and to prevent CORS errors in the browser
 app.use(cors({
-  origin: ["http://localhost:5173" , "https://project-2-frontend-evp7.onrender.com"],
+  origin: ["http://localhost:5173" , "https://project-2-frontend-l4gj.onrender.com"],
   credentials: true 
 }) 
 );
