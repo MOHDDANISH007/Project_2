@@ -11,6 +11,7 @@ const App = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }} // ✅ Fixed: added missing `}` and `)`
     >
+      {/* <Header /> */}
       <div>
         <Header />
         <div className='bg-[rgb(18, 19, 18)]'>
