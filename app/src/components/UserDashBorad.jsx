@@ -33,6 +33,8 @@ const Dashboard = () => {
   const BASE_URL = 'http://localhost:5000'
 
   // Redirect if not logged in
+  // This effect runs once on component mount to check authentication status
+  // If the user is not logged in, it redirects to the login page
   useEffect(() => {
     if (!authLoading && !loggedIn) {
       navigate('/login')
