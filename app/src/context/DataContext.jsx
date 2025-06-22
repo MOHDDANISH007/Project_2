@@ -5,6 +5,7 @@ const DataContext = createContext()
 
 export const DataProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
+  // const BASE_URL = 'http://localhost:5000'
   const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
   const dataFromBackendForPS4 = async () => {

@@ -23,7 +23,7 @@ const HomeContent = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
+  const BASE_URL = 'http://localhost:5000'
 
   // Get search query from URL
   const query = new URLSearchParams(location.search)
@@ -50,7 +50,7 @@ const HomeContent = () => {
   useEffect(() => {
     const checkCookie = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/auth/check`, {
+        const res = await axios.get(`${BASE_URL}/authentication/check`, {
           withCredentials: true
         })
         setCookie(res.data.authenticated)
@@ -205,7 +205,7 @@ const HomeContent = () => {
                       showPassword ? 'Hide password' : 'Show password'
                     }
                   >
-                    {showPassword ? '🙈' : '👁️'}
+                    {showPassword ? '👁️' : '🙈'}
                   </button>
                 </div>
 

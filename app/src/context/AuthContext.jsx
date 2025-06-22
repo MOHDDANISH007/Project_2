@@ -8,7 +8,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
-  const BASE_URL = 'https://project-2-backend-1hun.onrender.com' // Make sure this matches your backend URL
+  // const BASE_URL = 'http://localhost:5000'
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
   // Load user on mount
   useEffect(() => {

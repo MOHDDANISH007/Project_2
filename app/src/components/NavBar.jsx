@@ -1,59 +1,61 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MdAccountCircle, MdKeyboardArrowDown } from 'react-icons/md';
-import { FaSearch } from 'react-icons/fa';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { BsCart4 } from 'react-icons/bs';
-import { IoClose } from 'react-icons/io5';
-import { Link, useNavigate } from 'react-router-dom';
-import { UserInformationContext } from '../context/UserInformation';
+import React, { useContext, useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { MdAccountCircle, MdKeyboardArrowDown } from 'react-icons/md'
+import { FaSearch } from 'react-icons/fa'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { BsCart4 } from 'react-icons/bs'
+import { IoClose } from 'react-icons/io5'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserInformationContext } from '../context/UserInformation'
 
 const NavBar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileGamesOpen, setIsMobileGamesOpen] = useState(false);
-  const [isDesktopGamesOpen, setIsDesktopGamesOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchContent, setSearchContent] = useState('');
-  const [userName, setUserName] = useState('');
-  const [fullName, setFullName] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileGamesOpen, setIsMobileGamesOpen] = useState(false)
+  const [isDesktopGamesOpen, setIsDesktopGamesOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchContent, setSearchContent] = useState('')
+  const [userName, setUserName] = useState('')
+  const [fullName, setFullName] = useState('')
 
-  const { loggedIn, userInfo } = useContext(UserInformationContext);
-  const navigate = useNavigate();
+  const { loggedIn, userInfo } = useContext(UserInformationContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    console.log('User Information:', userInfo);
+    console.log('User Information:', userInfo)
     if (userInfo && userInfo.userName) {
-      const username = userInfo.userName.split(' ')[0];
+      const username = userInfo.userName.split(' ')[0]
 
-      setUserName(username);
-      setFullName(userInfo.userName);
+      setUserName(username)
+      setFullName(userInfo.userName)
     }
-  }, [userInfo]);
+  }, [userInfo])
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    setIsMobileGamesOpen(false);
-  };
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+    setIsMobileGamesOpen(false)
+  }
 
   const handleCartClick = () => {
     if (loggedIn) {
-      navigate('/cart');
+      navigate('/cart')
     } else {
-      navigate('/login');
+      navigate('/login')
     }
-  };
+  }
 
   const handleSearch = () => {
     if (searchContent.trim()) {
-      navigate(`/search?query=${encodeURIComponent(searchContent)}`);
-      setSearchOpen(false);
-      setSearchContent('');
+      navigate(`?query=${encodeURIComponent(searchContent)}`)
+      setSearchOpen(false)
+      setSearchContent('')
     }
-  };
+  }
 
   const clearSearch = () => {
-    navigate('/');
-  };
+    navigate('/')
+  }
+
+  
 
   return (
     <motion.div
@@ -150,9 +152,9 @@ const NavBar = () => {
                   type='text'
                   placeholder='Search for games, consoles, accessories...'
                   value={searchContent}
-                  onChange={(e) => setSearchContent(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') handleSearch();
+                  onChange={e => setSearchContent(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter') handleSearch()
                   }}
                   className='w-full px-6 py-3 text-lg rounded-xl border border-gray-300 focus:outline-none focus:ring-4 focus:ring-yellow-400 bg-black shadow-md transition-all duration-300 ease-in-out'
                 />
@@ -170,8 +172,8 @@ const NavBar = () => {
                 <IoClose
                   size={30}
                   onClick={() => {
-                    setSearchOpen(false);
-                    clearSearch();
+                    setSearchOpen(false)
+                    clearSearch()
                   }}
                 />
               ) : (
@@ -296,9 +298,9 @@ const NavBar = () => {
               type='text'
               placeholder='Search for games, consoles...'
               value={searchContent}
-              onChange={(e) => setSearchContent(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') handleSearch();
+              onChange={e => setSearchContent(e.target.value)}
+              onKeyDown={e => {
+                if (e.key === 'Enter') handleSearch()
               }}
               className='w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-gray-800 text-white'
               autoFocus
@@ -395,7 +397,7 @@ const NavBar = () => {
         </AnimatePresence>
       </nav>
     </motion.div>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

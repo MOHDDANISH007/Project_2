@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 export const UserInformationContext = createContext()
+// const BASE_URL = 'http://localhost:5000'
 const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
 export const UserInformationProvider = ({ children }) => {

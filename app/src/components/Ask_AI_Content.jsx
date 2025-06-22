@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm'
 import 'highlight.js/styles/github-dark.css'
 import { motion, AnimatePresence } from 'framer-motion'
 import { IoGameController } from 'react-icons/io5'
+import { useNavigate, Navigate } from 'react-router-dom'
 import {
   Search,
   Send,
@@ -16,15 +17,36 @@ import {
   Bot,
   Trash2,
   RefreshCw
-} from "lucide-react";
+} from 'lucide-react'
 import axios from 'axios'
 import ProductCard from './ProductCard'
 import { UserInformationContext } from '../context/UserInformation'
 
 const AskAIPage = () => {
+  // All hooks must be called unconditionally at the top level
   const { userInfo, loggedIn } = useContext(UserInformationContext)
+  const navigate = useNavigate()
 
-  const [messages] = useState([
+  // State declarations - all hooks must be called before any conditional returns
+  const [games, setGames] = useState([])
+  const [rootSlug, setRootSlug] = useState('')
+  const [id, setId] = useState('')
+  const [products, setProducts] = useState({})
+  const [query, setQuery] = useState('')
+  const [aiResponse, setAiResponse] = useState('')
+  const [userID, setUserID] = useState('')
+  const [userHistory, setUserHistory] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [authChecked, setAuthChecked] = useState(false)
+  const [showHistory, setShowHistory] = useState(false)
+  const [selectedHistoryItem, setSelectedHistoryItem] = useState(null)
+  const [isLoadingHistory, setIsLoadingHistory] = useState(false)
+
+  const BASE_URL = 'http://localhost:5000'
+
+  // Static messages data - moved outside of useState since it doesn't change
+  const messages = [
     {
       id: 1,
       type: 'ai',
@@ -80,39 +102,30 @@ const AskAIPage = () => {
         ]
       }
     }
-  ])
+  ]
 
-  const [games, setGames] = useState([])
-  const [rootSlug, setRootSlug] = useState('')
-  const [id, setId] = useState('')
-  const [products, setProducts] = useState({})
-  const [query, setQuery] = useState('')
-  const [aiResponse, setAiResponse] = useState('')
-  const [userID, setUserID] = useState('')
-  const [userHistory, setUserHistory] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
-  // New state for history section
-  const [showHistory, setShowHistory] = useState(false)
-  const [selectedHistoryItem, setSelectedHistoryItem] = useState(null)
-  const [isLoadingHistory, setIsLoadingHistory] = useState(false)
+  // Authentication check - runs on every render
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate('/login')
+    } else if (userInfo?._id) {
+      setUserID(userInfo._id)
+    }
+    setAuthChecked(true)
+  }, [userInfo, loggedIn, navigate])
 
+  // Other effects - all hooks must be called unconditionally
   useEffect(() => {
     if (rootSlug === 'xbox_one') {
-      setRootSlug('xboxone')
+      setRootSlug('xboxOne')
     } else if (rootSlug === 'xbox_x') {
-      setRootSlug('xboxx')
+      setRootSlug('xboxX')
     }
   }, [rootSlug])
 
   useEffect(() => {
-    if (loggedIn && userInfo?._id) {
-      setUserID(userInfo._id)
-    }
-  }, [userInfo, loggedIn])
-
-  useEffect(() => {
+    console.log('Root Slug:', rootSlug)
+    console.log('Game ID:', id)
     if (!rootSlug || !id) return
     const fetchDetails = async () => {
       try {
@@ -147,7 +160,10 @@ const AskAIPage = () => {
     fetchHistory()
   }, [userID])
 
+  // Helper functions
   const handleToSubmit = async () => {
+    // remove leading/trailing spaces from query
+
     if (!query.trim()) return
     setIsLoading(true)
     try {
@@ -239,8 +255,25 @@ const AskAIPage = () => {
     }
   }
 
+  // Conditional rendering after all hooks
+  if (!authChecked) {
+    return (
+      <div className='flex justify-center items-center min-h-screen'>
+        <div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500'></div>
+      </div>
+    )
+  }
+
+  if (!loggedIn) {
+    return <Navigate to='/login' replace />
+  }
+
   if (loading) {
-    return <div>Loading...</div>
+    return (
+      <div className='flex justify-center items-center min-h-screen'>
+        <div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500'></div>
+      </div>
+    )
   }
 
   return (

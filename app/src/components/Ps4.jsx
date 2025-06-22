@@ -7,7 +7,10 @@ const Ps4 = () => {
   const [ps4Games, setPs4Games] = useState([])
   const { dataFromBackendForPS4, loading, setLoading } = useData()
   const location = useLocation()
-  const query = new URLSearchParams(location.search).get('query')?.trim().toLowerCase()
+  const query = new URLSearchParams(location.search)
+    .get('query')
+    ?.trim()
+    .toLowerCase()
 
   useEffect(() => {
     const fetchPs4Games = async () => {
