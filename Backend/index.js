@@ -25,8 +25,10 @@ const PORT = 5000;
 console.log('Starting minimal server...');
 
 // cors
+// Allow requests from specific origins
+// This is important for security and to prevent CORS errors in the browser
 app.use(cors({
-  origin: ["http://localhost:5173" ,"http://localhost:3000", "https://gamenation-project-frontend.onrender.com"],
+  origin: ["http://localhost:5173" , "https://project-2-frontend-evp7.onrender.com"],
   credentials: true 
 }) 
 );
