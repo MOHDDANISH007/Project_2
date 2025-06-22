@@ -7,7 +7,8 @@ import axios from 'axios'
 
 const GameOverview = ({ game, youtubeLink, platform, id }) => {
   const [quantity, setQuantity] = useState(0)
-  const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5000'
+  // const BASE_URL = 'http://localhost:5000'
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
   const handleAddToCart = async () => {
     const token =

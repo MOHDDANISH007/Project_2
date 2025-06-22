@@ -43,7 +43,8 @@ const AskAIPage = () => {
   const [selectedHistoryItem, setSelectedHistoryItem] = useState(null)
   const [isLoadingHistory, setIsLoadingHistory] = useState(false)
 
-  const BASE_URL = 'http://localhost:5000'
+  // const BASE_URL = 'http://localhost:5000'
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
   // Static messages data - moved outside of useState since it doesn't change
   const messages = [
