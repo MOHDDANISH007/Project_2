@@ -47,6 +47,8 @@ app.use("/productsItems", productsItemsRoutes);
 app.use("/userInformation", userInformation);
 
 // Simple routes - NO parameters, NO external routes
+// These routes are for testing purposes only
+// They should not crash the server and should return a simple JSON response
 app.get('/', (req, res) => {
     console.log('Root accessed');
     res.json({ message: 'Server working!' });
