@@ -23,7 +23,7 @@ const HomeContent = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const BASE_URL = 'http://localhost:5000'
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
   // Get search query from URL
   const query = new URLSearchParams(location.search)

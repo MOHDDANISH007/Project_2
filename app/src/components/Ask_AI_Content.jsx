@@ -92,7 +92,7 @@ const AskAIPage = () => {
   const [userHistory, setUserHistory] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [loading, setLoading] = useState(false)
-  const BASE_URL = 'http://localhost:5000'
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
   // New state for history section
   const [showHistory, setShowHistory] = useState(false)
   const [selectedHistoryItem, setSelectedHistoryItem] = useState(null)

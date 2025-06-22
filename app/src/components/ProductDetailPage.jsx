@@ -21,7 +21,7 @@ const ProductDetailPage = () => {
   const [openFAQIndex, setOpenFAQIndex] = useState(null)
   const [quantity, setQuantity] = useState(0)
   const [loading, setLoading] = useState(false)
-  const BASE_URL = 'http://localhost:5000' // Replace with your actual API base URL
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com' // Replace with your actual API base URL
 
   const slugSegment = 'consoles'
   const features = [

@@ -30,7 +30,7 @@ const Dashboard = () => {
     loading: authLoading,
     logout
   } = useUserInformation()
-  const BASE_URL = 'http://localhost:5000'
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
   // Redirect if not logged in
   // This effect runs once on component mount to check authentication status

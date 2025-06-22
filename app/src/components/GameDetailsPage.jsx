@@ -17,7 +17,7 @@ const GameDetailsPage = () => {
   const [game, setGame] = useState(null)
   const [loading, setLoading] = useState(false)
   const [youtubeLink, setYoutubeLink] = useState('')
-  const BASE_URL = 'http://localhost:5000'  // ✅ Use HTTP (not HTTPS)
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'  // ✅ Use HTTP (not HTTPS)
 
   console.log('Platform:', platform, 'ID:', id)
 

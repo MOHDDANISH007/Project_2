@@ -10,7 +10,7 @@ const CartPage = () => {
   const [image, setImage] = useState(null)
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
-  const BASE_URL = 'http://localhost:5000'
+  const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
   useEffect(() => {
     const fetchCart = async () => {
