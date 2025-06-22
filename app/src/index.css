@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+.custom-bg {
+  background-color: rgb(32, 33, 32);
+}
+
+body {
+  background-color: rgb(18, 19, 18);
+  color: white;
+}
+.scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge Chromium */
+}
+
+.custom-bg1 {
+  background-color: rgb(77, 26, 125);
+}
