@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useData } from '../context/DataContext.jsx'
 import { motion } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
+import LoadingSpinner from '../components/LoadingSpinner.jsx'
 
 const XboxOne = () => {
   const [xboxGames, setXboxGames] = useState([])
@@ -36,9 +37,7 @@ const XboxOne = () => {
 
   if (loading) {
     return (
-      <div className='min-h-screen flex items-center justify-center text-white'>
-        <div className='text-2xl'>Loading consoles...</div>
-      </div>
+    <LoadingSpinner />
     )
   }
 

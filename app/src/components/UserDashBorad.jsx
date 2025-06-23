@@ -45,7 +45,6 @@ const Dashboard = () => {
 
   // Fetch user cart with cleanup
   useEffect(() => {
-    
     let isMounted = true
     const controller = new AbortController()
 
@@ -172,7 +171,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await logout()
-      navigate('/' , {replace: true}) // Redirect to home after logout  
+      navigate('/', { replace: true }) // Redirect to home after logout
       window.location.reload() // Full page reload to ensure clean state
     } catch (err) {
       console.error('Logout error:', err)
@@ -221,7 +220,7 @@ const Dashboard = () => {
             aria-label='Logout'
           >
             <IoIosLogOut className='text-2xl' />
-            
+
             <span className='font-medium cursor-pointer'>Logout</span>
           </button>
         </header>
@@ -270,7 +269,6 @@ const Dashboard = () => {
         </section>
 
         {/* Cart Items Section */}
-       
       </div>
     </div>
   )

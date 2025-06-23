@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useData } from '../context/DataContext' // adjust path as needed
+import LoadingSpinner from './LoadingSpinner'
 
 const ProductContent = () => {
   const { dataFromBackendForConsoles, loading, setLoading } = useData()
@@ -95,10 +96,8 @@ const ProductContent = () => {
   }
 
   if (localLoading || products.length === 0) {
-    return (
-      <div className='min-h-screen flex items-center justify-center text-white bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900'>
-        <div className='text-2xl'>Loading consoles...</div>
-      </div>
+    return(
+      <LoadingSpinner />
     )
   }
 

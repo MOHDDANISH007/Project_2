@@ -200,7 +200,7 @@ const CartPage = () => {
         </div>
       ) : (
         <div className='text-center text-gray-300 text-lg sm:text-xl mt-10'>
-          Loading your cart...
+          No Products in Cart 🛒
         </div>
       )}
     </motion.div>
