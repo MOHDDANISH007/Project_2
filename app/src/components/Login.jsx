@@ -19,8 +19,8 @@ export default function LoginPage () {
 
     try {
       await login(email, password)
+      navigate('/', { replace: true }) // Redirect to home after login
       window.location.reload() // Reload to ensure user info is updated
-      // navigate('/')
     } catch (err) {
       setError(err.message || 'Login failed. Please try again.')
     } finally {

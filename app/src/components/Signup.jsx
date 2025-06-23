@@ -51,8 +51,6 @@ const SignupPage = () => {
   }
 
   const handleSubmit = async () => {
-    // Prevent submission if there are validation errors
-    // This ensures the form is validated before proceeding
     if (!validateForm()) return
 
     setIsLoading(true)
@@ -60,9 +58,15 @@ const SignupPage = () => {
 
     try {
       await signup(fullName, formData.email, formData.password)
-      navigate('/')
+      //  means go the home page and don't store history of the current page (signup page)
+      //  and when u going to the home page it will reload the page
+      //  so that the user can see the changes
+
+      navigate('/', { replace: true })
+      window.location.reload() // Only after navigation is complete
     } catch (err) {
       console.error('Signup error:', err)
+      // You might want to set an error state here to show to the user
     } finally {
       setIsLoading(false)
     }

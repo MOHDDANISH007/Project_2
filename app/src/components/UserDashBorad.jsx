@@ -172,7 +172,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await logout()
-      navigate('/')
+      navigate('/' , {replace: true}) // Redirect to home after logout  
       window.location.reload() // Full page reload to ensure clean state
     } catch (err) {
       console.error('Logout error:', err)
