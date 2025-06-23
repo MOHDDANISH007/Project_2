@@ -172,8 +172,8 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await logout()
-      window.location.reload() // Full page reload to ensure clean state
       navigate('/')
+      window.location.reload() // Full page reload to ensure clean state
     } catch (err) {
       console.error('Logout error:', err)
       navigate('/')
@@ -220,7 +220,7 @@ const Dashboard = () => {
             aria-label='Logout'
           >
             <IoIosLogOut className='text-2xl' />
-            <span className='font-medium'>Logout</span>
+            <span className='font-medium cursor-pointer'>Logout</span>
           </button>
         </header>
 
