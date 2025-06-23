@@ -214,12 +214,14 @@ const Dashboard = () => {
             <MdDashboard className='text-3xl text-blue-600' />
             <h1 className='text-2xl font-bold text-gray-800'>User Dashboard</h1>
           </div>
+          {/* logout button */}
           <button
             onClick={handleLogout}
             className='flex items-center space-x-2 text-red-600 hover:text-red-800 transition-colors'
             aria-label='Logout'
           >
             <IoIosLogOut className='text-2xl' />
+            
             <span className='font-medium cursor-pointer'>Logout</span>
           </button>
         </header>
