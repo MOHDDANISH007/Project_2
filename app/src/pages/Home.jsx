@@ -18,13 +18,13 @@ const HomeContent = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true) // For initial load
+  const [isLoggingIn, setIsLoggingIn] = useState(false) // For login process
 
   // Router hooks
   const location = useLocation()
   const navigate = useNavigate()
 
-  // const BASE_URL = 'http://localhost:5000'
   const BASE_URL = 'https://project-2-backend-1hun.onrender.com'
 
   // Get search query from URL
@@ -63,6 +63,8 @@ const HomeContent = () => {
         console.error('Error checking auth:', err)
         setCookie(false)
         setTimeout(() => setShowLoginPopup(true), 2000)
+      } finally {
+        setIsLoading(false)
       }
     }
     checkCookie()
@@ -71,7 +73,7 @@ const HomeContent = () => {
   // Handle login form submission
   const handleSubmit = async e => {
     e.preventDefault()
-    setIsLoading(true)
+    setIsLoggingIn(true)
     try {
       await login(email, password)
       setShowLoginPopup(false)
@@ -79,7 +81,7 @@ const HomeContent = () => {
     } catch (error) {
       console.error('Login error:', error)
     } finally {
-      setIsLoading(false)
+      setIsLoggingIn(false)
     }
   }
 
@@ -93,7 +95,12 @@ const HomeContent = () => {
     : games
 
   if (isLoading) {
-    return <LoadingSpinner />
+    return (
+      <div className='flex items-center justify-center min-h-screen bg-white'>
+        <div className='animate-spin rounded-full h-16 w-16 border-b-4 border-indigo-500'></div>
+        <p className='ml-4 text-lg text-gray-700 font-medium'>Loading...</p>
+      </div>
+    )
   }
 
   return (
@@ -217,10 +224,17 @@ const HomeContent = () => {
 
                 <button
                   type='submit'
-                  disabled={isLoading}
-                  className='login-button w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-xl shadow-lg hover:scale-105 transition disabled:opacity-50'
+                  disabled={isLoggingIn}
+                  className='login-button w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-xl shadow-lg hover:scale-105 transition disabled:opacity-50 flex items-center justify-center gap-2'
                 >
-                  {isLoading ? 'Signing in...' : 'Sign In'}
+                  {isLoggingIn ? (
+                    <>
+                      <div className='w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin'></div>
+                      Signing in...
+                    </>
+                  ) : (
+                    'Sign In'
+                  )}
                 </button>
               </form>
 
