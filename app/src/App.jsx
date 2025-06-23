@@ -16,7 +16,6 @@ const App = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* ✅ This will now react to navigation without reload */}
       <div>
         <Header />
         <div className='bg-[rgb(18, 19, 18)]'>
