@@ -58,6 +58,7 @@ const SignupPage = () => {
 
     try {
       await signup(fullName, formData.email, formData.password)
+      navigate('/')
     } catch (err) {
       console.error('Signup error:', err)
     } finally {
