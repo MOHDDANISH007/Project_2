@@ -51,6 +51,7 @@ const SignupPage = () => {
   }
 
   const handleSubmit = async () => {
+    // Prevent submission if there are validation errors
     if (!validateForm()) return
 
     setIsLoading(true)
