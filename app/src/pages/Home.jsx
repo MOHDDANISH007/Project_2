@@ -4,6 +4,7 @@ import { useData } from '../context/DataContext'
 import { useAuth } from '../context/AuthContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const HomeContent = () => {
   // Context hooks
@@ -90,6 +91,10 @@ const HomeContent = () => {
         return gameName && searchQuery && gameName.includes(searchQuery)
       })
     : games
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <div className='home-content'>

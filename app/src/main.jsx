@@ -23,6 +23,7 @@ import CartPage from './components/CartPage.jsx'
 import Ask_AI_Content from './components/Ask_AI_Content.jsx'
 import { User } from 'lucide-react'
 import UserDashBorad from './components/UserDashBorad.jsx'
+import SignupPage from './components/Signup.jsx'
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,8 @@ const router = createBrowserRouter([
       { path: '/login', element: <LoginPage /> },
       { path: 'cart', element: <CartPage /> }, // For redirect after login
       { path: '/askAI', element: <Ask_AI_Content /> },
-      { path: '/userDashboard', element: <UserDashBorad /> }
+      { path: '/userDashboard', element: <UserDashBorad /> },
+      { path: '/signup', element: <SignupPage /> },
     ]
   }
 ])
